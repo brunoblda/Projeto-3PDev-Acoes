@@ -14,25 +14,39 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
+
 <body>
 
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
 
+	<c:set var="titulo" value="Cadastramento de ações" />
+	<c:set var="rota" value="/acao/incluir"/>
+	<c:set var="metodo" value="post"/>
+	<c:set var="botao" value="Cadastrar"/>
+	
+	<c:if test="${not empty acao }">
+		<c:set var="titulo" value="Cadastramento de ações" />
+		<c:set var="rota" value="/voltar"/>
+		<c:set var="metodo" value="get"/>
+		<c:set var="botao" value="Voltar"/>
+	</c:if>	
+	
 	<div class="container">
-		<h2>Cadastramento de ações</h2>
+		<h2>${titulo}</h2>
 
-		<form action="/acao/incluir" method="post">
+		<form action="${rota}" method="${metodo}">
 			<div class="form-group">
 				<label >Nome:</label> <input type="text"
-					class="form-control" placeholder="Entre com o nome da Ação"
+					class="form-control" value="${acao.nome}" placeholder="Entre com o nome da Ação"
 					name="nome">
 			</div>
 			<div class="form-group">
 				<label >Sigla:</label> <input type="text"
-					class="form-control" placeholder="Entre com a Sigla"
+					class="form-control" value="${acao.sigla}" placeholder="Entre com a Sigla"
 					name="sigla">
 			</div>
-			<button type="submit" class="btn btn-default">Cadastrar</button>
+			<button type="submit" class="btn btn-default">${botao}</button>
 		</form>
 
 	</div>

@@ -33,6 +33,7 @@
 
 		<c:if test="${not empty acoes }">
 			<h2>Listagem de Ações: ${acoes.size()}</h2>
+
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -41,6 +42,20 @@
 						<th>Sigla</th>
 						<th></th>
 						<th></th>
+						<th><form action="/acao/ordenar" method="post">
+								<div class="input-group">
+									<select class="form-control" name="sortBy">
+										<option value="nome">Nome</option>
+										<option value="sigla">Sigla</option>
+										<option value="id">Id</option>
+									</select>
+									<div class="input-group-btn">
+										<button class="btn btn-default" type="submit">
+											<i class="glyphicon glyphicon-th-list"></i>
+										</button>
+									</div>
+								</div>
+							</form></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,11 +65,13 @@
 							<td>${acao.getNome()}</td>
 							<td>${acao.getSigla()}</td>
 							<td><a href="/acao/${acao.id}/excluir">Excluir</a></td>
-							<td><a href="/acao/consultar">Detalhar</a></td>
+							<td><a href="/acao/${acao.id}/consultar">Detalhar</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+
+
 		</c:if>
 
 

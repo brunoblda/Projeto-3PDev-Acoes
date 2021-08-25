@@ -1,10 +1,9 @@
 package code.com.desafio.appBruno.model.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import code.com.desafio.appBruno.model.domain.Acao;
@@ -17,7 +16,11 @@ public class AcaoService {
 	private AcaoRepository acaoRepository;
 		
 	public List<Acao> obterLista(){
-		return (List<Acao>) acaoRepository.findAll();
+		return (List<Acao>) acaoRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
+	}
+	
+	public List<Acao> obterLista(String campo){
+		return (List<Acao>) acaoRepository.findAll(Sort.by(Sort.Direction.ASC, campo));
 	}
 	
 	public void incluir(Acao acao) {
@@ -32,6 +35,8 @@ public class AcaoService {
 	public Acao obterPorId(Integer id) {	
 		return acaoRepository.findById(id).orElse(null);
 	}
+	
+	
 		
 		
 }
