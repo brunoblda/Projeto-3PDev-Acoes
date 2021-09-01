@@ -18,7 +18,7 @@ public class AcaoController {
 	@Autowired
 	private AcaoService acaoService;
 	
-	@GetMapping(value = "/")
+	@GetMapping(value = "/home")
 	public String inicializa() {
 		return "index";
 	}

@@ -11,3 +11,7 @@ Projeto utiliza as camadas de View, controller, domain, service e repository.
 Realiza operações de CRUD no Banco de Dados Mysql para o cadastro de ações.
 
 A listagem de ações pode ser ordenada pelos campos Id, Nome e Sigla.
+
+Realiza o cadastro de Usuarios no banco de dados.
+
+Realiza a autenticação dos usuarios
