@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Usuario</title>
+<title>Usuarios</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -15,17 +15,16 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
-
 	<div class="container">
-
 		<c:if test="${not empty mensagem}">
 			<div class="alert alert-success alert-dismissible fade in">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Sucesso!</strong> ${mensagem}
 			</div>
 		</c:if>
+		<c:if test="${not empty usuarios }">
+			<h2>Listagem de Usuarios: ${usuarios.size()}</h2>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -36,20 +35,22 @@
 						<th></th>
 					</tr>
 				</thead>
-				<tbody>					
+				<tbody>
+					<c:forEach var="usuario" items="${usuarios}" varStatus="id">
 						<tr>
-							<td>${user.id}</td>
-							<td>${user.getNome()}</td>
-							<td>${user.getEmail()}</td>
-							<td><a href="/usuario/${user.id}/excluir">Excluir</a></td>
-							<td><a href="/usuario/${user.id}/consultar">Detalhar</a></td>
-						</tr>					
+							<td>${usuario.id}</td>
+							<td>${usuario.getNome()}</td>
+							<td>${usuario.getEmail()}</td>
+							<td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+							<td><a href="/usuario/${usuario.id}/consultar">Detalhar</a></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
-
-
-
+		</c:if>
+		<c:if test="${empty usuarios}">
+			<h2>Não existem Usuarios cadastrados !!!</h2>
+		</c:if>
 	</div>
-
 </body>
 </html>

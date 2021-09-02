@@ -26,7 +26,7 @@
 	<c:set var="botao" value="Cadastrar"/>
 	
 	<c:if test="${not empty acao }">
-		<c:set var="titulo" value="Cadastramento de ações" />
+		<c:set var="titulo" value="Detalhes" />
 		<c:set var="rota" value="/voltar"/>
 		<c:set var="metodo" value="get"/>
 		<c:set var="botao" value="Voltar"/>

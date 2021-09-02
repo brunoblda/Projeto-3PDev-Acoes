@@ -32,6 +32,16 @@ public class UsuarioController {
 
 	}
 	
+	@GetMapping(value = "/usuario/{id}/consultar")
+	public String consultar(Model model, @PathVariable Integer id) {
+		
+		Usuario usuario = usuarioService.obterPorId(id);
+		
+		model.addAttribute("usuario", usuario);
+		
+		return telaCadastro();
+	}
+	
 	@GetMapping(value = "/usuario/home")
 	public String mostrar() {
 		
@@ -50,8 +60,13 @@ public class UsuarioController {
 		return "redirect:/logout";
 	}
 	
-	
-
+	@GetMapping(value = "/usuario/lista")
+	public String obterLista(Model model) {
+		
+		model.addAttribute("usuarios", usuarioService.obterLista());
+		
+		return "usuario/lista";
+	}
 	
 
 }

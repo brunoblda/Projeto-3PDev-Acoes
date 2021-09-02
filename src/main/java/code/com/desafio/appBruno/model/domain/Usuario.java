@@ -15,11 +15,17 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	private Boolean administrador;
 	
 	public Usuario() {
 		
 	}
-	
+	public Boolean getAdministrador() {
+		return administrador;
+	}
+	public void setAdministrador(Boolean administrador) {
+		this.administrador = administrador;
+	}
 	public Integer getId() {
 		return id;
 	}
